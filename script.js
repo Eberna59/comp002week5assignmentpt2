@@ -21,6 +21,24 @@ function setSize(newSize) {
 }
 
 setSize(20);
+
+function handleArrow(event) {
+    if (event.key === "ArrowUp") {
+        if (size > 70) {
+            balloon.textContent = "💥";
+            document.body.removeEventListener("keydown", handleArrow);
+        } else {
+            setSize(size * 1.2);
+            event.preventDefault();
+        }
+
+    } else if (event.key === "ArrowDown") {
+        setSize(size * 0.8);
+        event.preventDefault();
+    }
+}
+
+document.body.addEventListener("keydown", handleArrow);
 // 2. The index.html page has a tabbed layout. Make the default state of the layout show
 // the first tab, and make it so that when you click the links at the top the correct
 // tab's contents are displayed and the others are hidden. Prevent the default action of
